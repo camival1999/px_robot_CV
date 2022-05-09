@@ -5,10 +5,10 @@ l3 = 100;
 l4 = 100;
 l = [l1, l2, l3, l4]; 
 %% Cálculo de offsets
-off4 = 0;
-off3 = atand(100/32)*pi/(180);
-off2 = 2*pi-off3;
-off1 = 0; %Cambiar a pi si no se ajusta el marco de base.
+off1 = 0;
+off2 = -atand(100/32)*pi/(180);
+off3 = -pi/2-off2;
+off4 = 0; %Cambiar a pi si no se ajusta el marco de base.
 %% Definicion del robot DH std
 L(1) = Link('revolute','alpha',-pi/2,'a',0,   'd',l(1),'offset',off1, 'qlim',[-3*pi/4 3*pi/4]);
 L(2) = Link('revolute','alpha',0,    'a',l(2),'d',0,   'offset',off2, 'qlim',[-3*pi/4 3*pi/4]);
