@@ -34,7 +34,7 @@
   </link>
 
   <joint name="joint_1" type="revolute">
-    <origin xyz="0.0 0.0 0.09" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.09" rpy="0.0 0.0 3.141592"/> <!-- Modificar altura Z según altura de base (en metros/10) -->
     <parent link="base_link"/>
     <child link="link1"/>
     <axis xyz="0 0 1"/>
@@ -43,7 +43,7 @@
 
   <link name="link2">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 3.141592"/>
       <geometry>
         <mesh filename="package://px_robot_CV/meshes/Bicep.STL" scale="1 1 1"/>
       </geometry>
@@ -54,7 +54,7 @@
   </link>
 
   <joint name="joint_2" type="revolute">
-    <origin xyz="0.0 0.0 0.042" rpy="1.5707 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.047" rpy="-1.5707 0.0 0.0"/>
     <parent link="link1"/>
     <child link="link2"/>
     <axis xyz="0 0 1"/>
@@ -63,7 +63,7 @@
 
   <link name="link3">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.880499"/>
       <geometry>
         <mesh filename="package://px_robot_CV/meshes/Bicep.STL" scale="1 1 1"/>
       </geometry>
@@ -74,7 +74,7 @@
   </link>
 
   <joint name="joint_3" type="revolute">
-    <origin xyz="0.0 0.1065 0" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.032 -0.100 0" rpy="0.0 0.0 -1.2611"/>
     <parent link="link2"/>
     <child link="link3"/>
     <axis xyz="0 0 1"/>
@@ -83,7 +83,7 @@
 
   <link name="link4">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/>
       <geometry>
         <mesh filename="package://px_robot_CV/meshes/Wrist.STL" scale="1 1 1"/>
       </geometry>
@@ -94,7 +94,7 @@
   </link>
 
   <joint name="joint_4" type="revolute">
-    <origin xyz="0.0 0.1065 0" rpy="0.0 0.0 0.0"/>
+    <origin xyz="0.095242 -0.030478 0" rpy="0.0 0.0 -0.3097"/>
     <parent link="link3"/>
     <child link="link4"/>
     <axis xyz="0 0 1"/>
@@ -104,7 +104,7 @@
   <link name="tcp_link"></link>
 
   <joint name="tcp" type="fixed">
-    <origin xyz="0.0 0.092 0" rpy="-1.5707 0.0 0.0"/>
+    <origin xyz="0.100 0.0 0" rpy="1.5707 0.0 1.5707"/>
     <parent link="link4"/>
     <child link="tcp_link"/>
   </joint>
