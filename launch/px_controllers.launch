@@ -1,3 +1,4 @@
+<!--Este archivo abre el bus y la comunicación con el puerto USB, carga la configuración del YAML y habilita el movimiento de motores-->
 <launch>
   <arg name="usb_port"                default="/dev/ttyUSB0"/>
   <arg name="dxl_baud_rate"           default="1000000"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>px_robot</name>
+  <name>px_robot_CV</name>
   <version>0.0.0</version>
   <description>Package to control Phantom X Robot</description>
 

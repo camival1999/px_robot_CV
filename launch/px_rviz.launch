@@ -1,8 +1,9 @@
+<!-- -->
 <launch>
   <!-- Argumentos -->
-  <arg name="model" default="$(find px_robot)/urdf/px_collision.urdf"/>
-  <arg name="gui" default="true" />
-  <arg name="rvizconfig" default="$(find px_robot)/config/config.rviz" />
+  <arg name="model" default="$(find px_robot_CV)/urdf/px.urdf"/> <!-- URDF: Universal Robot Description File. px_collision.urdf-->
+  <arg name="gui" default="false" />
+  <arg name="rvizconfig" default="$(find px_robot_CV)/config/config.rviz" />
   
   <!-- Carga el robot -->
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
@@ -11,13 +12,13 @@
   <node 
   name="robot_state_publisher" 
   pkg="robot_state_publisher" 
-  type="robot_state_publisher" />
+  type="robot_state_publisher" /> <!-- Se encarga de leer el URDF, ver donde están las juntas y controlarlas-->
   
   <!-- Carga el manejador de juntas -->
   <node if="$(arg gui)" 
   name="joint_state_publisher" 
   pkg="joint_state_publisher_gui" 
-  type="joint_state_publisher_gui" />
+  type="joint_state_publisher_gui" /> <!-- Se encarga de manipular las juntas controladas por el robot state publisher-->
   
   <node unless="$(arg gui)" 
   name="joint_state_publisher" 

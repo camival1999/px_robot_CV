@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="px_robot">
+<robot name="px_robot_CV">
 
   <link name="world"></link>
 
@@ -7,7 +7,7 @@
     <visual name="">
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://px_robot/meshes/Base.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/Base.STL" scale="1 1 1"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
@@ -25,7 +25,7 @@
     <visual name="">
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://px_robot/meshes/Shoulder.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/Shoulder.STL" scale="1 1 1"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
@@ -45,7 +45,7 @@
     <visual name="">
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://px_robot/meshes/Bicep.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/Bicep.STL" scale="1 1 1"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
@@ -65,7 +65,7 @@
     <visual name="">
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://px_robot/meshes/Bicep.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/Bicep.STL" scale="1 1 1"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
@@ -85,7 +85,7 @@
     <visual name="">
       <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
       <geometry>
-        <mesh filename="package://px_robot/meshes/Wrist.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/Wrist.STL" scale="1 1 1"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
