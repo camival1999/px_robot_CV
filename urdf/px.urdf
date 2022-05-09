@@ -5,9 +5,9 @@
 
   <link name="base_link">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/>
       <geometry>
-        <mesh filename="package://px_robot_CV/meshes/Base.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/PX100_Base.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
@@ -23,9 +23,9 @@
 
   <link name="link1">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
       <geometry>
-        <mesh filename="package://px_robot_CV/meshes/Shoulder.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/PX100_Shoulder.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
@@ -34,7 +34,7 @@
   </link>
 
   <joint name="joint_1" type="revolute">
-    <origin xyz="0.0 0.0 0.09" rpy="0.0 0.0 3.141592"/> <!-- Modificar altura Z según altura de base (en metros/10) -->
+    <origin xyz="0.0 0.0 0.049" rpy="0.0 0.0 3.141592"/>
     <parent link="base_link"/>
     <child link="link1"/>
     <axis xyz="0 0 1"/>
@@ -43,9 +43,9 @@
 
   <link name="link2">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 3.141592"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -1.5707 1.5707"/>
       <geometry>
-        <mesh filename="package://px_robot_CV/meshes/Bicep.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/PX100_Bicep.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
@@ -63,9 +63,9 @@
 
   <link name="link3">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.880499"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.261094"/>
       <geometry>
-        <mesh filename="package://px_robot_CV/meshes/Bicep.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/PX100_Forearm.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
@@ -83,9 +83,9 @@
 
   <link name="link4">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
       <geometry>
-        <mesh filename="package://px_robot_CV/meshes/Wrist.STL" scale="1 1 1"/>
+        <mesh filename="package://px_robot_CV/meshes/PX100_Wrist.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark gray">
         <color rgba="0.1 0.1 0.1 1.0"/>
