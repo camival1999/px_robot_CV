@@ -1,23 +1,45 @@
-l = [14.5, 10.7, 10.7, 9]; % Longitudes eslabones
-% Definicion del robot RTB
-L(1) = Link('revolute','alpha',pi/2,'a',0,   'd',l(1),'offset',0,   'qlim',[-3*pi/4 3*pi/4]);
-L(2) = Link('revolute','alpha',0,   'a',l(2),'d',0,   'offset',pi/2,'qlim',[-3*pi/4 3*pi/4]);
-L(3) = Link('revolute','alpha',0,   'a',l(3),'d',0,   'offset',0,   'qlim',[-3*pi/4 3*pi/4]);
-L(4) = Link('revolute','alpha',0,   'a',0,   'd',0,   'offset',0,   'qlim',[-3*pi/4 3*pi/4]);
+%% Cálulo de las longitudes de eslabón
+l1 = 47;
+l2 = sqrt(100^2+32^2);
+l3 = 100;
+l4 = 100;
+l = [l1, l2, l3, l4]; 
+%% Cálculo de offsets
+off4 = 0;
+off3 = atand(100/32)*pi/(180);
+off2 = 2*pi-off3;
+off1 = 0; %Cambiar a pi si no se ajusta el marco de base.
+%% Definicion del robot DH std
+L(1) = Link('revolute','alpha',-pi/2,'a',0,   'd',l(1),'offset',off1, 'qlim',[-3*pi/4 3*pi/4]);
+L(2) = Link('revolute','alpha',0,    'a',l(2),'d',0,   'offset',off2, 'qlim',[-3*pi/4 3*pi/4]);
+L(3) = Link('revolute','alpha',0,    'a',l(3),'d',0,   'offset',off3, 'qlim',[-3*pi/4 3*pi/4]);
+L(4) = Link('revolute','alpha',0,    'a',l(4),'d',0,   'offset',off4, 'qlim',[-3*pi/4 3*pi/4]);
 PhantomX = SerialLink(L,'name','Px');
-% roty(pi/2)*rotz(-pi/2)
-PhantomX.tool = [0 0 1 l(4); -1 0 0 0; 0 -1 0 0; 0 0 0 1];
-ws = [-50 50];
-% Graficar robot
-PhantomX.plot([0 0 0 0],'notiles','noname');
+base = [-1  0  0  0; 
+         0 -1  0  0; 
+         0  0  1  0;
+         0  0  0  1];
+     
+tool = [ 0  0  1  0; 
+         1  0  0  0; 
+         0  1  0  0;
+         0  0  0  1];
+PhantomX.tool = tool; %Ajuste para emplear notación NOA
+PhantomX.base = base; %Si no se reajusta la base es necesario modificar el offset 1
+%% Graficar robot
+PhantomX.plot([0 0 0 0],'notiles');
 hold on
-trplot(eye(4),'rgb','arrow','length',15,'frame','0')
-axis([repmat(ws,1,2) 0 60])
+trplot(base,'rgb','arrow','length',75,'frame','0')
+ws = [-450 450]; %Espacio XY
+axis([repmat(ws,1,2) -100 450])
+view(-30,20)
+hold off
 PhantomX.teach()
-%%
-q = zeros(1,4);
-M = eye(4);
-for i=1:PhantomX.n
-    M = M * L(i).A(q(i));
-    trplot(M,'rgb','arrow','frame',num2str(i),'length',15)
-end
+%% Revisar marcos coordenados
+% q = zeros(1,4);
+% M = base;
+% for i=1:PhantomX.n
+%     M = M * L(i).A(q(i));
+%     trplot(M,'rgb','arrow','frame',num2str(i),'length',75)
+% end
+% hold off
