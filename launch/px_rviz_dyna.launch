@@ -1,6 +1,6 @@
 <launch>
   <!-- Argumentos -->
-  <arg name="model" default="$(find px_robot_CV)/urdf/px_collision.urdf"/>
+  <arg name="model" default="$(find px_robot_CV)/urdf/px.urdf"/>
   <arg name="gui" default="false" />
   <arg name="rvizconfig" default="$(find px_robot_CV)/config/config.rviz" />
   
@@ -8,7 +8,8 @@
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
 
   <!-- Carga el servidor de parametros para publicar el estado del rebot -->
-  <node name="robot_state_publisher" 
+  <node 
+    name="robot_state_publisher" 
     pkg="robot_state_publisher" 
     type="robot_state_publisher" >
     <remap from="joint_states" to="dynamixel_workbench/joint_states"/>
