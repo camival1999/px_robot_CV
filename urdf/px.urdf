@@ -5,25 +5,25 @@
 
   <link name="base_link">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 -1.5707"/><!--Simplemente se giró pi/2 el mundo-->
       <geometry>
-        <mesh filename="package://px_robot_CV/meshes/PX100_Base.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://px_robot_CV/meshes/PX100_Base.stl" scale="0.001 0.001 0.001"/><!--se asigna el modelo base y su escala -->
       </geometry>
       <material name="dark gray">
-        <color rgba="0.1 0.1 0.1 1.0"/>
+        <color rgba="0.2 0.2 0.2 1.0"/><!--color-->
       </material>
     </visual>
   </link>
 
-  <joint name="world_fixed" type="fixed">
+  <joint name="world_fixed" type="fixed"> <!--primera junta que conecta la base con el piso -->
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
     <parent link="world"/>
     <child link="base_link"/>
   </joint>
 
-  <link name="link1">
+  <link name="link1"><!--el primero que es la base giratoria-->
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/><!--los origenees siempre son cero cero cero porque su marco es respecto al link que le correspode -->
       <geometry>
         <mesh filename="package://px_robot_CV/meshes/PX100_Shoulder.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -33,12 +33,12 @@
     </visual>
   </link>
 
-  <joint name="joint_1" type="revolute">
+  <joint name="joint_1" type="revolute"><!--ubicación junta 1 respecto a la base-->
     <origin xyz="0.0 0.0 0.049" rpy="0.0 0.0 3.141592"/>
     <parent link="base_link"/>
     <child link="link1"/>
-    <axis xyz="0 0 1"/>
-    <limit lower="-2.32" upper="2.32" effort="10.0" velocity="1.57"/>
+    <axis xyz="0 0 1"/><!--el eje sobre el que se rota sibre su marco de referencia-->
+    <limit lower="-2.32" upper="2.32" effort="10.0" velocity="1.57"/><!--limites-->
   </joint>
 
   <link name="link2">
@@ -54,7 +54,7 @@
   </link>
 
   <joint name="joint_2" type="revolute">
-    <origin xyz="0.0 0.0 0.047" rpy="-1.5707 0.0 0.0"/>
+    <origin xyz="0.0 0.0 0.047" rpy="-1.5707 0.0 0.0"/> <!--offset en angulos fijos-->
     <parent link="link1"/>
     <child link="link2"/>
     <axis xyz="0 0 1"/>
@@ -103,8 +103,8 @@
 
   <link name="tcp_link"></link>
 
-  <joint name="tcp" type="fixed">
-    <origin xyz="0.100 0.0 0" rpy="1.5707 0.0 1.5707"/>
+  <joint name="tcp" type="fixed"><!--esta es la herramienta-->
+    <origin xyz="0.100 0.0 0" rpy="1.5707 0.0 1.5707"/><!--ubicación y orientación de la herramienta -->
     <parent link="link4"/>
     <child link="tcp_link"/>
   </joint>
