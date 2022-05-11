@@ -83,7 +83,7 @@
 
   <link name="link4">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
+      <origin xyz="0.0 0.0 0.0" rpy="3.141592 1.5707 1.5707"/>
       <geometry>
         <mesh filename="package://px_robot_CV/meshes/PX100_Wrist.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -94,7 +94,7 @@
   </link>
 
   <joint name="joint_4" type="revolute">
-    <origin xyz="0.095242 -0.030478 0" rpy="-3.141592 0.0 -0.3097"/>
+    <origin xyz="0.095242 -0.030478 0" rpy="0.0 0.0 -0.3097"/>
     <parent link="link3"/>
     <child link="link4"/>
     <axis xyz="0 0 1"/>
