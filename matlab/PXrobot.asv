@@ -85,9 +85,9 @@ q1 = [0 0 0 0];
     [posPub, posMsg] = rospublisher('/dynamixel_workbench/joint_states','sensor_msgs/JointState'); 
 
 %Definimos el mensaje que queremos publicar al tópico
-    posMsg.Header.Stamp.Sec = msgPose.Header.Stamp.Sec+4;
+    posMsg.Header.Stamp.Sec = msgPose.Header.Stamp.Sec;
     posMsg.Name = {'joint_1' 'joint_2' 'joint_3' 'joint_4' 'joint_5'}; 
-    posMsg.Position = [0.0 0.0 0.0 0.0 0.0];
+    posMsg.Position = [0.0 0.0 0.0 0.0];
     send(posPub,posMsg); %Envio
 
     msgPose = receive(poseSub);
