@@ -23,7 +23,7 @@
 
   <link name="link1"><!--el primero que es la base giratoria-->
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 1.5707"/><!--los origenees siempre son cero cero cero porque su marco es respecto al link que le correspode -->
+      <origin xyz="0.0 0.0 0.0" rpy="3.141592 3.141592 1.5707"/><!--los origenees siempre son cero cero cero porque su marco es respecto al link que le correspode -->
       <geometry>
         <mesh filename="package://px_robot_CV/meshes/PX100_Shoulder.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -43,7 +43,7 @@
 
   <link name="link2">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 -1.5707 1.5707"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
       <geometry>
         <mesh filename="package://px_robot_CV/meshes/PX100_Bicep.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -54,7 +54,7 @@
   </link>
 
   <joint name="joint_2" type="revolute">
-    <origin xyz="0.0 0.0 0.047" rpy="-1.5707 0.0 0.0"/> <!--offset en angulos fijos-->
+    <origin xyz="0.0 0.0 0.047" rpy="1.5707 0.0 0.0"/> <!--offset en angulos fijos-->
     <parent link="link1"/>
     <child link="link2"/>
     <axis xyz="0 0 1"/>
@@ -74,7 +74,7 @@
   </link>
 
   <joint name="joint_3" type="revolute">
-    <origin xyz="0.032 -0.100 0" rpy="0.0 0.0 -1.2611"/>
+    <origin xyz="0.032 0.100 0" rpy="0.0 0.0 0.3097"/>
     <parent link="link2"/>
     <child link="link3"/>
     <axis xyz="0 0 1"/>
@@ -83,7 +83,7 @@
 
   <link name="link4">
     <visual name="">
-      <origin xyz="0.0 0.0 0.0" rpy="0.0 1.5707 1.5707"/>
+      <origin xyz="0.0 0.0 0.0" rpy="3.141592 1.5707 -1.5707"/>
       <geometry>
         <mesh filename="package://px_robot_CV/meshes/PX100_Wrist.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -104,7 +104,7 @@
   <link name="tcp_link"></link>
 
   <joint name="tcp" type="fixed"><!--esta es la herramienta-->
-    <origin xyz="0.100 0.0 0" rpy="1.5707 0.0 1.5707"/><!--ubicación y orientación de la herramienta -->
+    <origin xyz="0.100 0.0 0" rpy="-1.5707 0.0 -1.5707"/><!--ubicación y orientación de la herramienta -->
     <parent link="link4"/>
     <child link="tcp_link"/>
   </joint>

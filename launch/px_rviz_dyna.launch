@@ -1,3 +1,4 @@
+<!--sincronización del robot real con el rviz haciendo un gemelo virtual-->
 <launch>
   <!-- Argumentos -->
   <arg name="model" default="$(find px_robot_CV)/urdf/px.urdf"/>
