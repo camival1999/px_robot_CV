@@ -1,7 +1,7 @@
 <!--sincronización del robot real con el rviz haciendo un gemelo virtual-->
 <launch>
   <!-- Argumentos -->
-  <arg name="model" default="$(find px_robot_CV)/urdf/px_collision.urdf"/>
+  <arg name="model" default="$(find px_robot_CV)/urdf/px.urdf"/>
   <arg name="gui" default="false" />
   <arg name="rvizconfig" default="$(find px_robot_CV)/config/config.rviz" />
   
