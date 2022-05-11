@@ -66,7 +66,7 @@ q1 = [-1.5707 1.2 0.4 -2];
     end
     disp(MTHCorke);
     disp(MTHManual);
-%% CONEXIÓN CON MATLAB Movimiento de Rviz
+%% CONEXIÓN CON MATLAB Movimiento del robot. Asegurarse que está corriendo px_controllers.launch previamente
 % Iniciamos nodo ROS
     rosinit
 %%
@@ -95,12 +95,3 @@ q1 = [-1.5707 1.2 0.4 -2];
     msgPose = receive(poseSub);
     disp('Position after Joints 1-4');
     disp(msgPose.Position)
-    
-%% IGNORAR Definimos el cliente del servicio que vamos a emplear junto a su mensaje
-%     rvizSvcClient = rossvcclient('/dynamixel_workbench/dynamixel_command');
-%     rvizCommandMsg = rosmessage(rvizSvcClient);
-%% Generamos el mensaje deseado antes de llamar al servicio con el cliente
-%     rvizCommandMsg.AddrName = "Goal_Position";
-%     rvizCommandMsg.Id = 1;
-%     rvizCommandMsg.Value = 512;
-%     call(rvizSvcClient, rvizCommandMsg);
