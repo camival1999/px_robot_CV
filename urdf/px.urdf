@@ -34,7 +34,7 @@
   </link>
 
   <joint name="joint_1" type="revolute"><!--ubicación junta 1 respecto a la base-->
-    <origin xyz="0.0 0.0 0.049" rpy="1.5707 0.0 3.141592"/>
+    <origin xyz="0.0 0.0 0.049" rpy="0.0 0.0 3.141592"/>
     <parent link="base_link"/>
     <child link="link1"/>
     <axis xyz="0 0 1"/><!--el eje sobre el que se rota sibre su marco de referencia-->
@@ -54,7 +54,7 @@
   </link>
 
   <joint name="joint_2" type="revolute">
-    <origin xyz="0.0 0.0 0.047" rpy="-1.5707 0.0 0.0"/> <!--offset en angulos fijos-->
+    <origin xyz="0.0 0.0 0.047" rpy="1.5707 0.0 0.0"/> <!--offset en angulos fijos-->
     <parent link="link1"/>
     <child link="link2"/>
     <axis xyz="0 0 1"/>
