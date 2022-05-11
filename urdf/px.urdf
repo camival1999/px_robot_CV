@@ -104,7 +104,7 @@
   <link name="tcp_link"></link>
 
   <joint name="tcp" type="fixed"><!--esta es la herramienta-->
-    <origin xyz="0.100 0.0 0" rpy="1.5707 0.0 1.5707"/><!--ubicación y orientación de la herramienta -->
+    <origin xyz="0.100 0.0 0" rpy="1.5707 0.0 -1.5707"/><!--ubicación y orientación de la herramienta -->
     <parent link="link4"/>
     <child link="tcp_link"/>
   </joint>
