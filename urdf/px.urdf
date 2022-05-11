@@ -74,7 +74,7 @@
   </link>
 
   <joint name="joint_3" type="revolute">
-    <origin xyz="0.032 0.100 0" rpy="0.0 0.0 -1.2611"/>
+    <origin xyz="0.032 0.100 0" rpy="0.0 0.0 0.3097"/>
     <parent link="link2"/>
     <child link="link3"/>
     <axis xyz="0 0 1"/>
