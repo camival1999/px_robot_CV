@@ -8,8 +8,8 @@ format long G
 valores=[0 0 0 0 0];
 %valores=[-20 20 -20 20 0];
 valores=[30 -30 20 -30 0];%modificado por colisiones el max es 23 id 3
-valores=[-90 15 -55 17 0];
-valores=[-90 45 -55 45 10];
+%valores=[-90 15 -55 17 0];
+%valores=[-90 45 -55 45 10];
 angulos=valores+[180 180 270 180 273];
 posicion=(4096/360)*angulos;
 q=[0 0 0 0 0];

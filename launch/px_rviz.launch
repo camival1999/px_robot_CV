@@ -1,7 +1,8 @@
 <launch>
   <!-- Argumentos -->
+  
   <arg name="model" default="$(find px_robot_CV)/urdf/px.urdf"/> <!-- URDF: Universal Robot Description File. px_collision.urdf-->
-  <arg name="gui" default="true" />
+  <arg name="gui" default="true" /><!--el gui son los sliders y salen con true-->
   <arg name="rvizconfig" default="$(find px_robot_CV)/config/config.rviz" />
   
   <!-- Carga el robot -->

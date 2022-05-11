@@ -27,14 +27,15 @@ tool = [ 0  0  1  0;
 PhantomX.tool = tool; %Ajuste para emplear notación NOA
 PhantomX.base = base; %Si no se reajusta la base es necesario modificar el offset 1
 %% Graficar robot
-PhantomX.plot([0 0 0 0],'notiles');
+figure()
+PhantomX.plot([0 0 0 0],'tilesize',50);
 hold on
 trplot(base,'rgb','arrow','length',75,'frame','0')
 ws = [-450 450]; %Espacio XY
 axis([repmat(ws,1,2) -100 450])
 view(-30,20)
 hold off
-PhantomX.teach()
+%PhantomX.teach()
 %% Revisar marcos coordenados
 % q = zeros(1,4);
 % M = base;
@@ -43,3 +44,14 @@ PhantomX.teach()
 %     trplot(M,'rgb','arrow','frame',num2str(i),'length',75)
 % end
 % hold off
+%%
+%Seccion para sacar la matriz de transformación TCP
+q1=[0 0 0 0];
+q2=[0 0 0 1];
+q3=[0 0 1 0];
+q4=[0 1 1 1];
+
+figure(); %%toca uno por uno
+PhantomX.fkine(q1);
+title('posición 0 0 0 0');
+PhantomX.plot(q1,'notiles');
