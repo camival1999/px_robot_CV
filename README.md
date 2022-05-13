@@ -52,7 +52,7 @@ Sin embargo para nuestro análisis decidimos trabajar con una postura de Home di
 
 ## Sección 2: Python
 #### Materiales:
-======= Los materiales para esta sección del trabajo son:
+Los materiales para esta sección del trabajo son:
 - Robot PhantomX Pincher
     - 6 motores Dynamixel AX12
     - Fuente 12V
