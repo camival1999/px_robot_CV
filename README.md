@@ -96,7 +96,7 @@ Por medio del Dynamixel con el robot conectado modificamos la cantidad de pasos 
 
      Ya con estos valores podemos pasar a desarrollar el código de phyton que incluye una matriz de 4 x 3 donde se encuentra la información del nombre de la articulación y los pasos para Home y Destino por aticulación.
 
-<<<<<<< HEAD
+
 - Script de python:
 Este script tiene el trabajo de navegar entre articulaciones usando las teclas "w" y "s" y cambiando las posiciones entre home y destino con "a" y "s". Para esto realizamos las siguientes funciones:
     - ```jointCommand```: Esta función permite crear el servici'deentro del nodo del launch para comunicarse con el robot.
@@ -107,9 +107,7 @@ Este script tiene el trabajo de navegar entre articulaciones usando las teclas "
     Finalmente pasamos al main que recibe la información de las taclas presionadas usando ```getkey``` luego con esta información según la tecla presionada se cambia de articulación  con "w" o "s" donde si se llega al wait y se presiona s se vuelve al wrist y viceversa. Todo esto se encuentra en un loop.
 
 Finalmente se pueden observar los resuldatos de nuestro control mediante  script de python, con el gemelo virtual en Rviz: https://youtu.be/I8w1deoKF24
-=======
-Vídeo demostrativo del control mediante script de Python: https://youtu.be/I8w1deoKF24
->>>>>>> ad3f99401532cc18fdc1ca4cbb986798af76713a
+
 
 ### Análisis:
 
