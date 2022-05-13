@@ -91,6 +91,8 @@ Este script tiene el trabajo de navegar entre articulaciones usando las teclas "
     - ```getkey```: Esta función permite detectar la tecla que ha sido presionada en el teclado y la retorna.
     - ```mov Art```: Esta función recibe la articulaciíon que se busca mover y los pasos que se requieren para la posición que deseamos.
     - ```selectPos```: Esta información toma la información de la articulación en la que se encuentra y la tacla presionada para así navegrar hacia adeltante y atras en las articulaciones, y finalmente haciendo uso de la función ```mov Art``` se envía la información de la poscición con la articulación para moverla, tomando los valores cómo los que fueron previamente definidos en una matriz. 
+![Screenshot from 2022-05-13 14-12-37](https://user-images.githubusercontent.com/82957735/168400198-cc61e843-4e7a-4d8c-b74a-3c887d92c429.png)
+
 
     Finalmente pasamos al main que recibe la información de las taclas presionadas usando ```getkey``` luego con esta información según la tecla presionada se cambia de articulación  con "w" o "s" donde si se llega al wait y se presiona s se vuelve al wrist y viceversa. Todo esto se encuentra en un loop.
 
