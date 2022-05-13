@@ -47,8 +47,12 @@ Sin embargo para nuestro análisis decidimos trabajar con una postura de Home di
 | 3  | 100           |    0           | 0             | q<sub>3</sub>|-0.0986π|
 | 4  | 100           |    0           | 0             | q<sub>4</sub>|   0    |
     
+
+
+
 ## Sección 2: Python
 #### Materiales:
+Los materiales para esta sección del trabajo son:
 - Robot PhantomX Pincher
     - 6 motores Dynamixel AX12
     - Fuente 12V
@@ -60,31 +64,49 @@ Sin embargo para nuestro análisis decidimos trabajar con una postura de Home di
     - Dynamixel 
 
 
+
 ### Metodología y Resultados
+
 Explicación del programa
 
 Para realizar este programa, iniciamos definiendo las posiciones de home y destino, para luego realizar el programa de python que por medio de las teclas que el usuario presiones se cambie entre estas poses cada motor.
 
--Definición de poses: 
-Por medio del Dynamixel con el robot conectado encontramos los valores que nosotros consideramos para los límites articulares, para así evitar que cualquier pose futura ocasionara un overload en los motores 
+- Definición de poses: 
+Por medio del Dynamixel con el robot conectado modificamos la cantidad de pasos del motor para encontrar las poses home y destino que queriamos. Además encontramos los valores que nosotros consideramos para los límites articulares, para así evitar que cualquier pose futura ocasionara un overload en los motores.
 
-| ID | Mín  | Máx  | Home | Destino |
-|----|------|------|------|---------|
-| 1  | 0    | 4095 | 2048 | 3073    |
-| 2  | 1100 | 3300 | 2048 | 2477    |
-| 3  | 1000 | 3333 | 3073 | 1925    |
-| 4  | 600  | 3333 | 2048 | 835     |
-| 5  | 1550 | 3600 | 3110 | 2180    |
+    | ID | Mín  | Máx  | Home | Destino |
+    |----|------|------|------|---------|
+    | 1  | 0    | 4095 | 2048 | 3073    |
+    | 2  | 1100 | 3300 | 2048 | 2477    |
+    | 3  | 1000 | 3333 | 3073 | 1925    |
+    | 4  | 600  | 3333 | 2048 | 835     |
+    | 5  | 1550 | 3600 | 3110 | 2180    |
 
-Vídeo demostrativo del control mediante script de Python: https://youtu.be/I8w1deoKF24
+     Ya con estos valores podemos pasar a desarrollar el código de phyton que incluye una matriz de 4 x 3 donde se encuentra la información del nombre de la articulación y los pasos para Home y Destino por aticulación.
+
+
+- Script de python:
+Este script tiene el trabajo de navegar entre articulaciones usando las teclas "w" y "s" y cambiando las posiciones entre home y destino con "a" y "s". Para esto realizamos las siguientes funciones:
+    - ```jointCommand```: Esta función permite crear el servici'deentro del nodo del launch para comunicarse con el robot.
+    - ```getkey```: Esta función permite detectar la tecla que ha sido presionada en el teclado y la retorna.
+    - ```mov Art```: Esta función recibe la articulaciíon que se busca mover y los pasos que se requieren para la posición que deseamos.
+    - ```selectPos```: Esta información toma la información de la articulación en la que se encuentra y la tacla presionada para así navegrar hacia adeltante y atras en las articulaciones, y finalmente haciendo uso de la función ```mov Art``` se envía la información de la poscición con la articulación para moverla, tomando los valores cómo los que fueron previamente definidos en una matriz. 
+![Screenshot from 2022-05-13 14-12-37](https://user-images.githubusercontent.com/82957735/168400198-cc61e843-4e7a-4d8c-b74a-3c887d92c429.png)
+
+
+    Finalmente pasamos al main que recibe la información de las taclas presionadas usando ```getkey``` luego con esta información según la tecla presionada se cambia de articulación  con "w" o "s" donde si se llega al wait y se presiona s se vuelve al wrist y viceversa. Todo esto se encuentra en un loop.
+
+Finalmente se pueden observar los resuldatos de nuestro control mediante  script de python, con el gemelo virtual en Rviz: https://youtu.be/I8w1deoKF24
+
 
 ### Análisis:
 
-Como se puede observar en el vídeo, Python nos permite generar scripts, es posible tener un manejo completo de ROS desde Matlab, lo cual es muy útil a la hora de emplear cálculos complejos y automatizaciones que no son posibles en el terminal. La parte más compleja es el manejo de servicios, dado que difiere bastante de su forma en el terminal, pero desde luego es de gran utilidad para controlar la pose de la tortuga directamente. Respecto a los resultados obtenidos podemos decir que son satisfactorios: Se logró controlar la tortuga mediante el manejo de publicadores y velocidades, incluso combinando en este caso dos movimientos dirigidos por velocidades lineares y angulares, además de ser capaces de extraer la información de la pose en ciertos puntos con el uso de suscripciones a tópicos, en este caso al tópico de pose. Finalmente no hubo problemas en definir el servidor y cliente necesarios para el uso del servicio de teletransporte y emplear este para manipular de forma directa la pose de la tortuga, junto a la verificación de este cambio empleando la suscripción mencionada y el cierre del nodo maestro en Matlab para finalizar la práctica de esta sección.
+Como se puede observar en el vídeo, Python nos permite generar scripts, lo cual es muy útil a la hora de emplear cálculos complejos y automatizaciones que no son posibles en el terminal. La parte más compleja es el manejo de servicios, dado que difiere bastante de su forma en el terminal, pero desde luego es de gran utilidad para controlar la pose de la tortuga directamente. Respecto a los resultados obtenidos podemos decir que son satisfactorios: Se logró controlar la tortuga mediante el manejo de publicadores y velocidades, incluso combinando en este caso dos movimientos dirigidos por velocidades lineares y angulares, además de ser capaces de extraer la información de la pose en ciertos puntos con el uso de suscripciones a tópicos, en este caso al tópico de pose. Finalmente no hubo problemas en definir el servidor y cliente necesarios para el uso del servicio de teletransporte y emplear este para manipular de forma directa la pose de la tortuga, junto a la verificación de este cambio empleando la suscripción mencionada y el cierre del nodo maestro en Matlab para finalizar la práctica de esta sección.
 
 
 ## Sección 3: Toolbox
 
+<<<<<<< HEAD
 ### Materiales
 - Robot PhantomX Pincher
     - 6 motores Dynamixel AX12
@@ -96,18 +118,47 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
     - Matlab R2020b 
 ### Metodología y Resultados
 Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior en la pose de Home para obtener el siguiente código incluído en el script `PXrobot.m`:
+=======
+### Materiales, metodología y Resultados
+<<<<<<< HEAD
+Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
+Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior para obtener el siguiente código:
+=======
+Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior en la pose de Home para obtener el siguiente código:
+>>>>>>> ad3f99401532cc18fdc1ca4cbb986798af76713a
+>>>>>>> 49bc659dc03de42e820a56ecc0f360a20cc50107
 
-![SerialLink](https://user-images.githubusercontent.com/55710287/168346238-dc6b90d1-89cf-44c6-ae46-f894365c79c2.png)
+Inserte código de Matlab Link y serial link
 
+<<<<<<< HEAD
+`       #configuración vel linal en x `
+`        velocidad.linear.x=velLinear`
+`        velocidad.linear.y=0`
+`        velocidad.linear.z=0`
+`        #Configuración vel angular` 
+`        velocidad.angular.x=0`
+`        velocidad.angular.y=0`
+`        velocidad.angular.z=velAngular`
+Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot:
+=======
 Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot y finalmente graficarlo según los ángulos definidos en el vector q1 con el siguiente código:
+>>>>>>> ad3f99401532cc18fdc1ca4cbb986798af76713a
 
-![Plot](https://user-images.githubusercontent.com/55710287/168346282-c9e6eb96-ed17-45b3-a575-05c41a36a02c.png)
+Inserte foto del robot en matlab
 
 Una vez definido el robot, podemos emplear funciones propias del toolbox para hallar las MTH entre eslabones y entre el TCP y la base como se ve a continuación:
 
-![TCP](https://user-images.githubusercontent.com/55710287/168346334-81c85b0f-4995-4b90-96c2-0b0279fd2f0f.png)
-![TCPMatrices](https://user-images.githubusercontent.com/55710287/168346353-01333af7-9931-46a7-a9a4-39219ca47d56.png)
+Foto obteniendo el la MTH tcp
 
+<<<<<<< HEAD
+Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación:
+
+Fotos en distintas poses.
+
+### Análisis:
+
+Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colision con el robot real. Sin embargo no se tienen en cuenta colisiones propias, es decir cuando se intersecta consigo mismo, entonces hay que tomar las gráficas teniendo en cuenta alguna posible interseccón propia.
+=======
 Como detalle adicional le agregamos un ciclo anidado para recorrer la matriz resultante en busca de valores muy cercanos a 0 y reemplazarlos por exactamente 0 con el fin de limpiar y ordenar la MTH. Esto dado que el Toolbox tiene ciertos errores numéricos en decimales extremos, causando que resultados que  deberían ser 0, resulten en valores muy cercanos del orden de 10<sup>-17</sup> presentes en la matriz. 
 
 Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación como se explicó empleando la variable q1:
@@ -120,10 +171,13 @@ Pose 1 [1.5707 -0.7 0.2 0.9]:
 
 Pose 2 [-1.5707 1.2 0.4 -2]: 
 ![pos2](https://user-images.githubusercontent.com/55710287/168346712-f577c2b5-8c95-46ae-ad27-e56e319ac8cd.png)
+>>>>>>> ad3f99401532cc18fdc1ca4cbb986798af76713a
 
-### Análisis:
 
+<<<<<<< HEAD
+=======
 Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colisión o daño con el robot real y obtener de manera sencilla todas sus ecuaciones de cinemática, matrices y demás. Además vemos que si bien ambas matrices MTH resultantes son casi idénticas, no coinciden ciertos signos. Esto es debido a que en el cálculo manual de la matriz, no se tuvo en cuenta la rotación del marco base de 180° alrededor de Z, lo cual se arregla fácilmente premultiplicando la expresión por la MTH del eslabón 0 a base o mundo que fue obviada con el fin de mostrar que se debe tener cuidado a la hora de trabajar con distintos marcos de referencia, pues esto puede llevar a resultados completamente diferentes que pueden parecer iguales al no mirar detenidamente.
+>>>>>>> ad3f99401532cc18fdc1ca4cbb986798af76713a
 
 ## Sección 4: Conexión con Matlab
 
