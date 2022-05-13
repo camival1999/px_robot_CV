@@ -199,7 +199,6 @@ Vídeo mostrando el control mediante Matlab+ROS+Dynamixel+Rviz: https://youtu.be
 
 ### Análisis:
 
-<<<<<<< HEAD
 En este ejercicio tuvimos varios inconvenientes al conectar Matlab con Ros pero finalmente tras de varios intentos al reiniciar el computador la conexión fue exitosa, en esta sección aprendimos cómo por medio de matlab podiamos ir cambiando las poses en el robot y viendo su cambio en el Rviz de manera exitosa, además en esta sección fue muy importante reconocer los limites que le habíamos definido al robot, ya que en una de las poses de la guia uno de los angulos se encontraba por fuera de los rangos definidos (resaltado en el código) por lo que lo cambianmos pr el ángulo más cercano dentro de nuestros limites para así evitar colisiones y sobrecargas en el motor. Fue muy interesante el manejo desde Matlab que requería el cambio de grados a pasos en el motor ya que debíamos hacer una regla de 3 y compensar los ánngulos para ubicar el cero en  nuestro home.
 Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan los topicos y los servicios dentro de matlab, pero tambien permitió crear un script ejecutable que permite realizar estas funciones desde el programa. 
 
