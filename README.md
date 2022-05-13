@@ -21,6 +21,22 @@ Una vez definidos estos marcos de referencia procedemos a generar la tabla de pa
 
 insertar tabla de parámetros DH
 
+#### Materiales:
+    -Robot PhantomX Pincher
+        -6 motores Dynamixel AX12
+        -Fuente 12V
+        -FTDI
+        -HUB
+    -Computador
+        -Ubuntu 20.04
+        -Ros noetic
+        -Dynamixel 
+        -Matlab 2020b
+            -Toolbox Peter Corke 9.10
+    -Calibrador pie de rey
+    
+
+
 
 ## Sección 2: Python
 ### Materiales, metodología y Resultados
