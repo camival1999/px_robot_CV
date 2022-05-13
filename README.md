@@ -51,7 +51,9 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
 
 ### Metodología y Resultados
 Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
+Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior para obtener el siguiente código:
 
+Inserte código de Matlab Link y serial link
 
 `       #configuración vel linal en x `
 `        velocidad.linear.x=velLinear`
@@ -61,10 +63,21 @@ Explicación del Código, función Link y Serial Link. Fotos del modelo en Matla
 `        velocidad.angular.x=0`
 `        velocidad.angular.y=0`
 `        velocidad.angular.z=velAngular`
+Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot:
+
+Inserte foto del robot en matlab
+
+Una vez definido el robot, podemos emplear funciones propias del toolbox para hallar las MTH entre eslabones y entre el TCP y la base como se ve a continuación:
+
+Foto obteniendo el la MTH tcp
+
+Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación:
+
+Fotos en distintas poses.
 
 ### Análisis:
 
-Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan los topicos y los servicios, pero tambien permitió crear un script ejecutable que permite realizar estas funciones desde la consola solo presionando teclas. Una de las dificultades que encontré fue al momento de usar el nodo ya que desconocía que solo se puede crear un nodo por script, por lo que se pudo solucionar creandolo cómo una variable global.
+Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colision con el robot real. Sin embargo no se tienen en cuenta colisiones propias, es decir cuando se intersecta consigo mismo, entonces hay que tomar las gráficas teniendo en cuenta alguna posible interseccón propia.
 
 
 
