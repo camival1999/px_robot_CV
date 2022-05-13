@@ -76,11 +76,11 @@ if __name__ == '__main__':
             print('\n')
             print('la tecla presioada fue: ')
             print(letra)
-            prueba=b'y'
-            if letra == prueba:
-                print('esto es una y')
 
-            #tecla=letra
+            #código de prueba para rectificación de tecla
+            #prueba=b'y'
+            #if letra == prueba:
+                #print('esto es una y')
             #Revisamos que letra fue seleccionada
 
             if letra == b'w' or letra == b'W':
@@ -102,31 +102,6 @@ if __name__ == '__main__':
                 print("seleccionaste A o D")
                 selectPos(artSelec,letra)
 
-            # Goal_Position (0,1023)
-            # Torque_Limit (0,1023)
-            # Comando para mover junta. Parámetros: 'nada','ID''address que queremos editar','valor','delay
-            #Ajusta torques (Nosotros no porque el robot es nuevo), más que nada en el PX antiguo.
-            #jointCommand('', 1, 'Torque_Limit', 600, 0) #0-1024
-            #jointCommand('', 2, 'Torque_Limit', 500, 0)
-            #jointCommand('', 3, 'Torque_Limit', 400, 0)
-            #jointCommand('', 4, 'Torque_Limit', 400, 0)
-            #Lleva a una posición incial todos los ángulos en 0°, estirado
-            #jointCommand('', 1, 'Goal_Position', 2048, 1.0) #0-1024, de -150° a 150°
-            #jointCommand('', 2, 'Goal_Position', 2048, 1.0)
-            #time.sleep(0.5)
-            #jointCommand('', 3, 'Goal_Position', 3073, 1.0)
-            #time.sleep(0.5)
-            #jointCommand('', 4, 'Goal_Position', 2048, 1.0)
-            #jointCommand('', 5, 'Goal_Position', 3110, 1.0)
-            #time.sleep(1.5)
-            #Lleva a posición destino
-            #jointCommand('', 1, 'Goal_Position', 3073, 1.0) #0-1024, de -150° a 150°
-            #jointCommand('', 2, 'Goal_Position', 2477, 1.0)
-            #time.sleep(0.5)
-            #jointCommand('', 3, 'Goal_Position', 1925, 01.0)
-            #time.sleep(0.5)
-            #jointCommand('', 4, 'Goal_Position', 935, 1.0)
-            #jointCommand('', 5, 'Goal_Position', 2180, 1.0)
             
     except rospy.ROSInterruptException:
         pass

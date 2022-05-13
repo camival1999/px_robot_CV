@@ -35,17 +35,20 @@ insertar tabla de parámetros DH
             -Toolbox Peter Corke 9.10
     -Calibrador pie de rey
     
+
+
+
 ## Sección 2: Python
 #### Materiales:
-    -Robot PhantomX Pincher
-        -6 motores Dynamixel AX12
-        -Fuente 12V
-        -FTDI
-        -HUB
-    -Computador
-        -Ubuntu 20.04
-        -Ros noetic
-        -Dynamixel 
+    - Robot PhantomX Pincher
+        - 6 motores Dynamixel AX12
+        - Fuente 12V
+        - FTDI
+        - HUB
+    - Computador
+        - Ubuntu 20.04
+        - Ros noetic
+        - Dynamixel 
 
 
 ### Materiales, metodología y Resultados
@@ -53,18 +56,29 @@ Explicación del programa
 
 Para realizar este programa, iniciamos definiendo las posiciones de home y destino, para luego realizar el programa de python que por medio de las teclas que el usuario presiones se cambie entre estas poses cada motor.
 
--Definición de poses: 
-Por medio del Dynamixel con el robot conectado encontramos los valores que nosotros consideramos para los límites articulares, para así evitar que cualquier pose futura ocasionara un overload en los motores 
+- Definición de poses: 
+Por medio del Dynamixel con el robot conectado modificamos la cantidad de pasos del motor para encontrar las poses home y destino que queriamos. Además encontramos los valores que nosotros consideramos para los límites articulares, para así evitar que cualquier pose futura ocasionara un overload en los motores.
 
-| ID | Mín  | Máx  | Home | Destino |
-|----|------|------|------|---------|
-| 1  | 0    | 4095 | 2048 | 3073    |
-| 2  | 1100 | 3300 | 2048 | 2477    |
-| 3  | 1000 | 3333 | 3073 | 1925    |
-| 4  | 600  | 3333 | 2048 | 835     |
-| 5  | 1550 | 3600 | 3110 | 2180    |
+    | ID | Mín  | Máx  | Home | Destino |
+    |----|------|------|------|---------|
+    | 1  | 0    | 4095 | 2048 | 3073    |
+    | 2  | 1100 | 3300 | 2048 | 2477    |
+    | 3  | 1000 | 3333 | 3073 | 1925    |
+    | 4  | 600  | 3333 | 2048 | 835     |
+    | 5  | 1550 | 3600 | 3110 | 2180    |
 
-Control mediante script de Python: https://youtu.be/I8w1deoKF24
+     Ya con estos valores podemos pasar a desarrollar el código de phyton que incluye una matriz de 4 x 3 donde se encuentra la información del nombre de la articulación y los pasos para Home y Destino por aticulación.
+
+- Script de python:
+Este script tiene el trabajo de navegar entre articulaciones usando las teclas "w" y "s" y cambiando las posiciones entre home y destino con "a" y "s". Para esto realizamos las siguientes funciones:
+    - ```jointCommand```: Esta función permite crear el servici'deentro del nodo del launch para comunicarse con el robot.
+    - ```getkey```: Esta función permite detectar la tecla que ha sido presionada en el teclado y la retorna.
+    - ```mov Art```: Esta función recibe la articulaciíon que se busca mover y los pasos que se requieren para la posición que deseamos.
+    - ```selectPos```: Esta información toma la información de la articulación en la que se encuentra y la tacla presionada para así navegrar hacia adeltante y atras en las articulaciones, y finalmente haciendo uso de la función ```mov Art``` se envía la información de la poscición con la articulación para moverla, tomando los valores cómo los que fueron previamente definidos en una matriz. 
+
+    Finalmente pasamos al main que recibe la información de las taclas presionadas usando ```getkey``` luego con esta información según la tecla presionada se cambia de articulación  con "w" o "s" donde si se llega al wait y se presiona s se vuelve al wrist y viceversa. Todo esto se encuentra en un loop.
+
+Finalmente se pueden observar los resuldatos de nuestro control mediante  script de python, con el gemelo virtual en Rviz: https://youtu.be/I8w1deoKF24
 
 ### Análisis:
 
@@ -74,33 +88,36 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
 ## Sección 3: Toolbox
 
 ### Materiales, metodología y Resultados
+Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
 Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior para obtener el siguiente código:
 
-![SerialLink](https://user-images.githubusercontent.com/55710287/168346238-dc6b90d1-89cf-44c6-ae46-f894365c79c2.png)
+Inserte código de Matlab Link y serial link
 
-Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot y finalmente graficarlo según los ángulos definidos en el vector q1:
+`       #configuración vel linal en x `
+`        velocidad.linear.x=velLinear`
+`        velocidad.linear.y=0`
+`        velocidad.linear.z=0`
+`        #Configuración vel angular` 
+`        velocidad.angular.x=0`
+`        velocidad.angular.y=0`
+`        velocidad.angular.z=velAngular`
+Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot:
 
-![Plot](https://user-images.githubusercontent.com/55710287/168346282-c9e6eb96-ed17-45b3-a575-05c41a36a02c.png)
+Inserte foto del robot en matlab
 
 Una vez definido el robot, podemos emplear funciones propias del toolbox para hallar las MTH entre eslabones y entre el TCP y la base como se ve a continuación:
 
-![TCP](https://user-images.githubusercontent.com/55710287/168346334-81c85b0f-4995-4b90-96c2-0b0279fd2f0f.png)
-![TCPMatrices](https://user-images.githubusercontent.com/55710287/168346353-01333af7-9931-46a7-a9a4-39219ca47d56.png)
+Foto obteniendo el la MTH tcp
 
-Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación como se explicó empleando la variable q1:
+Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación:
 
-Pose Home:
-![posHome](https://user-images.githubusercontent.com/55710287/168346684-b176a5dd-7041-4174-9fd4-bedac5d4003e.png)
-
-Pose 1:
-![pos1](https://user-images.githubusercontent.com/55710287/168346647-1673e9fa-d02b-4266-ae96-f3be807f137e.png)
-
-Pose 2:
-![pos2](https://user-images.githubusercontent.com/55710287/168346712-f577c2b5-8c95-46ae-ad27-e56e319ac8cd.png)
+Fotos en distintas poses.
 
 ### Análisis:
 
-Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colisión con el robot real. Sin embargo no se tienen en cuenta colisiones propias, es decir cuando se intersecta consigo mismo, entonces hay que tomar las gráficas teniendo en cuenta alguna posible interseccón propia.
+Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colision con el robot real. Sin embargo no se tienen en cuenta colisiones propias, es decir cuando se intersecta consigo mismo, entonces hay que tomar las gráficas teniendo en cuenta alguna posible interseccón propia.
+
+
 
 ## Sección 4: Conexión con Matlab
 
