@@ -52,20 +52,7 @@ Sin embargo para nuestro análisis decidimos trabajar con una postura de Home di
 
 ## Sección 2: Python
 #### Materiales:
-<<<<<<< HEAD
-    - Robot PhantomX Pincher
-        - 6 motores Dynamixel AX12
-        - Fuente 12V
-        - FTDI
-        - HUB
-    - Computador
-        - Ubuntu 20.04
-        - Ros noetic
-        - Dynamixel 
-
-
-### Materiales, metodología y Resultados
-=======
+======= Los materiales para esta sección del trabajo son:
 - Robot PhantomX Pincher
     - 6 motores Dynamixel AX12
     - Fuente 12V
@@ -75,6 +62,7 @@ Sin embargo para nuestro análisis decidimos trabajar con una postura de Home di
     - Ubuntu 20.04
     - Ros noetic
     - Dynamixel 
+
 
 
 ### Metodología y Resultados
@@ -111,7 +99,7 @@ Finalmente se pueden observar los resuldatos de nuestro control mediante  script
 
 ### Análisis:
 
-Como se puede observar en el vídeo, Python nos permite generar scripts, es posible tener un manejo completo de ROS desde Matlab, lo cual es muy útil a la hora de emplear cálculos complejos y automatizaciones que no son posibles en el terminal. La parte más compleja es el manejo de servicios, dado que difiere bastante de su forma en el terminal, pero desde luego es de gran utilidad para controlar la pose de la tortuga directamente. Respecto a los resultados obtenidos podemos decir que son satisfactorios: Se logró controlar la tortuga mediante el manejo de publicadores y velocidades, incluso combinando en este caso dos movimientos dirigidos por velocidades lineares y angulares, además de ser capaces de extraer la información de la pose en ciertos puntos con el uso de suscripciones a tópicos, en este caso al tópico de pose. Finalmente no hubo problemas en definir el servidor y cliente necesarios para el uso del servicio de teletransporte y emplear este para manipular de forma directa la pose de la tortuga, junto a la verificación de este cambio empleando la suscripción mencionada y el cierre del nodo maestro en Matlab para finalizar la práctica de esta sección.
+Como se puede observar en el vídeo, Python nos permite generar scripts, lo cual es muy útil a la hora de emplear cálculos complejos y automatizaciones que no son posibles en el terminal. La parte más compleja es el manejo de servicios, dado que difiere bastante de su forma en el terminal, pero desde luego es de gran utilidad para controlar la pose de la tortuga directamente. Respecto a los resultados obtenidos podemos decir que son satisfactorios: Se logró controlar la tortuga mediante el manejo de publicadores y velocidades, incluso combinando en este caso dos movimientos dirigidos por velocidades lineares y angulares, además de ser capaces de extraer la información de la pose en ciertos puntos con el uso de suscripciones a tópicos, en este caso al tópico de pose. Finalmente no hubo problemas en definir el servidor y cliente necesarios para el uso del servicio de teletransporte y emplear este para manipular de forma directa la pose de la tortuga, junto a la verificación de este cambio empleando la suscripción mencionada y el cierre del nodo maestro en Matlab para finalizar la práctica de esta sección.
 
 
 ## Sección 3: Toolbox
