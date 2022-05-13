@@ -188,13 +188,16 @@ Control mediante Matlab+ROS+Dynamixel+Rviz: https://youtu.be/3_T5Dx4dea4
 
 ### Análisis:
 
-Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan los topicos y los servicios, pero tambien permitió crear un script ejecutable que permite realizar estas funciones desde la consola solo presionando teclas. Una de las dificultades que encontré fue al momento de usar el nodo ya que desconocía que solo se puede crear un nodo por script, por lo que se pudo solucionar creandolo cómo una variable global.
+En este ejercicio tuvimos varios inconvenientes al conectar Matlab con Ros pero finalmente depues de varios intentos al reiniciar el computador la conexión fue exitosa, en esta sección aprendimos cómo por medio de matlab podiamos ir cambiando las poses en el robot y viendo su cambio en el Rviz de manera exitosa, además en esta sección fue muy importante reconocer los limites que le habíamos definido al robot, ya que en una de las poses de la guia uno de los angulos se encontraba por fuera de los rangos definidos (resaltado en el código) por lo que lo cambianmos pr el ángulo más cercano dentro de nuestros limites para así evitar colisiones y sobrecargas en el motor. Fue muy interesante el manejo desde Matlab que requería el cambio de grados a pasos en el motor ya que debíamos hacer una regla de 3 y compensar los ánngulos para ubicar el cero en  nuestro home.
+Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan los topicos y los servicios dentro de matlab, pero tambien permitió crear un script ejecutable que permite realizar estas funciones desde el programa. 
 
 ## Conclusiones:
-- El terminal es una herramienta extremadamente útil para manejar el sistema de archivos, además de tener ciertas capacidades que no son posible de alcanzar mediante las alternativas con GUI.
-- Matlab a su vez tiene una gran capacidad para automatizar procesos en ROS como la recolección de datos, realizar cálculos complejos, algoritmos de evasión de objetos y mucho más.
+- El terminal es una herramienta extremadamente útil para manejar el sistema de archivos, además de tener ciertas capacidades que no son posibles de alcanzar mediante las alternativas con GUI.
+- Matlab a su vez tiene una gran capacidad para automatizar procesos en ROS como la recolección de datos, control de motores, recibir información del robot y graficarlo, al igual que realizar cálculos complejos, algoritmos de evasión de objetos y mucho más.
 - Es posible obtener en Matlab toda la información que proporciona ROS en el terminal, de una manera más organizada al poder emplear todas las capcidades del software destinadas al manejo de datos.
-- Se debe tener en cuenta el manejo de nodos, especialmente los maestro dentro de Matlab, pues no es posible correr más de una instancia del mismo, al igual que las relaciones de publicador/suscriptor entre ellos.
+- Al manejar nodos en Matlab se debe tener especial cuidado, pues no es posible correr más de una instancia del mismo, al igual que las relaciones de publicador/suscriptor entre ellos.
+- Herramientas cómo Dynamixel wizard permiten controlar motores desde una interfaz gráfica que proporciona la capacidad de prender y apagar los torques al igual que configurar los ángulos del motor evidenciando los pasos requeridos, siendo una herramienta fundamental al momento de recolección de información sobre cada motor en una pose.
+- Python al tener acceso a las librerías de toda la web permite usarlas al momento de controlar robots por medio de ros, aumentando las capacidades de un script. 
 - Los servicios pueden resultar de gran utilidad para poder manipular parámetros que no serían accesibles de forma directa de otras maneras.
 - Python es una excelente herramienta para manejar la interfaz humano máquina, además de todas las ventajas que nos ofrece este lenguaje como librerías, estructuras de datos, etc.
 - Además permite ejectuar complejas rutinas de manera sencila en un solo comando del terminal con ROS configurado.
