@@ -8,24 +8,18 @@ Contendrá los archivos necesarios para manejar el robot PhantomX PX100 nuevo de
 # Laboratorio 2: Cinemática directa PhantomX ROS
 ## Sección 1: Modelo DH
 ### Medidas
-Empleando como guía el artículo compartido (http://www.informit.com/blogs/blog.aspx?uk=The-10-Most-Important-Linux-Commands), comenzamos a explorar el uso del terminal en Linux, en este caso Ubuntu corriendo distintos comando en una variante del terminal instalada llamada Kitty:
-1. `pwd`. Este comando sirve  para ver la ubicación donde nos encontramos ahora mismo en el sistema de archivos, tal como "/home/CamiloPC" o cualquier carpeta donde nos encontremos.
-2. `ls`. Comando que nos permite ver el contenido en la ruta/carpeta actual o ruta que especifiquemos.
-3. `cd`. Uno de los comandos más empleados. Permite moverse entre directorios/carpetas o a rutas que especifiquemos directamte. Se puede combinar con ".." para simplemente regresar al directorio anterior.
-4. `touch`. Permite crear archivos, generalmente de texto, con el nombre que especifiquemos.
-5. `rm`. Comando que elimina el archivo que deseemos de el directorio actual generalmente. Se puede combinar con más argumentos para eliminar directorios y otro tipo de archivos.
-6. `mkdir`. Contrario al caso anterior, permite crear directorios/carpetas nuevas.
-7. `rmdir`. Realiza la misma función de `rm` con argumentos adicionales para eliminar directorios directamente.
-8. `mv`. Como se puede intuir, proviene del inglés "move" y permite mover archivos o directorios a la ubicación deseada.
-9. `cp`. En lugar de mover archivos y/o directorios, los copia.
-10. `man`. El comando más útil si se desea revisar información adicional de un comando, muestra el manual del comando que especifiquemos.
+Para definir el modelo y parámetros que vamos a emplear para el laboratorio necesitamos conocer sus dimensiones, especialmente aquellas entre las articulaciones dado que este modelo nuevo posee algunas diferencias respecto al anterior. A continuación se muestran las medidas tomadas en laboratorio con un calibrador y aquellas proporcionadas por el fabricante para verificarlas.
  
-### Parámetros DH 
-Aquí podemos ver el resultado de correr cada uno de estos comandos en orden:
-![Screenshot from 2022-04-07 18-42-22](https://user-images.githubusercontent.com/55710287/162336786-a43e6b44-1382-4de6-82ef-d69f93cbb326.png)
-Y el manual de usuario resultante al llamar `man rm`:
-![Screenshot from 2022-04-07 18-42-11](https://user-images.githubusercontent.com/55710287/162336791-09f16a88-31df-419b-9d3d-1c5191302810.png)
+inserte fotos de las medidas en la tablet y el plano del fabricante en favoritos
+
 ### Diagama DH
+Una vez definidas estas dimensiones procedemos a definir los marcos coordenados del diagrama DH std que vamos a emplear visto a continuación:
+
+inserte foto del diagrama DH
+### Parámetros DH 
+Una vez definidos estos marcos de referencia procedemos a generar la tabla de parámetros que requieren softwares como Matlab para obtener el modelo del robot virtual
+
+insertar tabla de parámetros DH
 
 
 ## Sección 2: Python
@@ -36,7 +30,7 @@ Control mediante script de Python: https://youtu.be/I8w1deoKF24
 
 ### Análisis:
 
-Como se pudo observar, es posible tener un manejo completo de ROS desde Matlab, lo cual es muy útil a la hora de emplear cálculos complejos y automatizaciones que no son posibles en el terminal. La parte más compleja es el manejo de servicios, dado que difiere bastante de su forma en el terminal, pero desde luego es de gran utilidad para controlar la pose de la tortuga directamente. Respecto a los resultados obtenidos podemos decir que son satisfactorios: Se logró controlar la tortuga mediante el manejo de publicadores y velocidades, incluso combinando en este caso dos movimientos dirigidos por velocidades lineares y angulares, además de ser capaces de extraer la información de la pose en ciertos puntos con el uso de suscripciones a tópicos, en este caso al tópico de pose. Finalmente no hubo problemas en definir el servidor y cliente necesarios para el uso del servicio de teletransporte y emplear este para manipular de forma directa la pose de la tortuga, junto a la verificación de este cambio empleando la suscripción mencionada y el cierre del nodo maestro en Matlab para finalizar la práctica de esta sección.
+Como se puede observar en el vídeo, Python nos permite generar scripts, es posible tener un manejo completo de ROS desde Matlab, lo cual es muy útil a la hora de emplear cálculos complejos y automatizaciones que no son posibles en el terminal. La parte más compleja es el manejo de servicios, dado que difiere bastante de su forma en el terminal, pero desde luego es de gran utilidad para controlar la pose de la tortuga directamente. Respecto a los resultados obtenidos podemos decir que son satisfactorios: Se logró controlar la tortuga mediante el manejo de publicadores y velocidades, incluso combinando en este caso dos movimientos dirigidos por velocidades lineares y angulares, además de ser capaces de extraer la información de la pose en ciertos puntos con el uso de suscripciones a tópicos, en este caso al tópico de pose. Finalmente no hubo problemas en definir el servidor y cliente necesarios para el uso del servicio de teletransporte y emplear este para manipular de forma directa la pose de la tortuga, junto a la verificación de este cambio empleando la suscripción mencionada y el cierre del nodo maestro en Matlab para finalizar la práctica de esta sección.
 
 
 ## Sección 3: Toolbox
