@@ -172,19 +172,30 @@ Este ejercicio es muy interesante ya que nos permitió recordar el manejo de Tó
 
 ## Sección 5: Matlab+Ros+Toolbox
 
-### Materiales, metodología y Resultados
-Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
+### Materiales
+- Robot PhantomX Pincher
+    - 6 motores Dynamixel AX12
+    - Fuente 12V
+    - FTDI
+    - HUB
+- Computador
+    - Ubuntu 20.04
+    - Matlab R2020b
+    - Ros noetic
+    - Dynamixel
+### Metodología y Resultados
+Para finalizar el laboratorio, realizamos el control del robot PhantomX a través de Matlab empleando mensajes de Dynamixel y funciones de ROS, visualizando todo al tiempo con RVIZ.
+El script de Matlab mostrado a continuación `ros_dyna.m` contiene todo lo necesario para este punto, además de asegurarse de correr tanto `px_controllers.launch` como `pc_rviz_dyna.launch` para las respectivas comunicaciones con el robot y Rviz.
 
+Foto Código
 
-`       #configuración vel linal en x `
-`        velocidad.linear.x=velLinear`
-`        velocidad.linear.y=0`
-`        velocidad.linear.z=0`
-`        #Configuración vel angular` 
-`        velocidad.angular.x=0`
-`        velocidad.angular.y=0`
-`        velocidad.angular.z=velAngular`
-Control mediante Matlab+ROS+Dynamixel+Rviz: https://youtu.be/3_T5Dx4dea4
+Esta sección arranca iniciando el nodo maestro de ROS como ya es costumbre. Tras ello definimos par de cliente y mensaje los cuales estarán encargados de realizar la comunicación con el servicio `/dynamixel_workbench/dynamixel_command` para controlar el robot. Después definimos los vectores que continene los ángulos a los que queremos llevar cada articulación y conociendo la estructura del mensaje requerido, enviamos los parámetros deseados de posición o `Goal_Position` a cada motor o `ID` con una pequeña pausa entre cada llamado para darle tiempo al robot que se mueva. 
+
+Al final del script se encuentra esta pequeña tabla con los límites articulares encontrado para el nuevo modelo del Phantom X, los cuales se tuvieron en cuenta a lo largo del laboratorio para asegurarnos de no golpear el mismo con el entorno ni consigo mismo.
+
+foto tabla
+
+Vídeo mostrando el control mediante Matlab+ROS+Dynamixel+Rviz: https://youtu.be/3_T5Dx4dea4
 
 ### Análisis:
 
