@@ -162,11 +162,13 @@ En esta sección tratamos la conexión de Matlab con el robot PhantomX mediante 
 Iniciamos conectando el nodo maestro de ROS en Matlab para poder comunicarnos con el robot. Tras ellos sencillamente definimos un suscriptor al tópico `/dynamixel_workbench/joint_states` el cual es el encargado de leer el estado de cada junta en el PhantomX y obtenemos esa información mediante el comando `receive()`.
 El siguiente paso es definir un publicador a este mismo tópico para poder enviar la información del estado de las juntas que luego el PhantomX puede leer como es indicado en el gráfico de nodos RQT, teniendo en cuenta el formato del mensaje requerido 
 
-Fotos del código y la consola
+![Topic](https://user-images.githubusercontent.com/55710287/168401123-c5e9252d-43a7-426e-886a-75ff1af21ddf.png)
+
+![topicResults](https://user-images.githubusercontent.com/55710287/168401130-109f8c66-bb24-4ab4-b375-c8d54d1df254.png)
 
 ### Análisis:
 
-Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan los topicos y los servicios, pero tambien permitió crear un script ejecutable que permite realizar estas funciones desde la consola solo presionando teclas. Una de las dificultades que encontré fue al momento de usar el nodo ya que desconocía que solo se puede crear un nodo por script, por lo que se pudo solucionar creandolo cómo una variable global.
+Este ejercicio es muy interesante ya que nos permitió recordar el manejo de Tópicos y la existencia de distintos tipos de mensajes, pues el formato que requería el robot era bastante diferentesa quellos que necesitaba el Turtlebot por ejemplo. La mayor dificultad fue el manejo de Timestamps para asegurarnos que el robot recibiera los mensaajes de manera correcta al ignorar aquellos que eran muy "antiguos"
 
 ## Sección 5: Matlab+Ros+Toolbox
 
