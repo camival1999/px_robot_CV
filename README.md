@@ -1,16 +1,9 @@
-# px_robot
-Copia del repo px_robot modificado por Camilo Valencia.
-Contendrá los archivos necesarios para manejar el robot PhantomX PX100 nuevo.
-
-Links a los videos:
-
-Control mediante Matlab+ROS+Dynamixel+Rviz: https://youtu.be/3_T5Dx4dea4
-
-
-
 Date of creation 06/May/2022.
 
 This repository will contain the work from Camilo Valencia and Sara Jiménez for the course "Robótica 2022-1" in the Universidad Nacional de Colombia Sede Bogotá, continuing with "Taller 2"
+# px_robot
+Copia del repo px_robot modificado por Camilo Valencia y Sara Jiménez.
+Contendrá los archivos necesarios para manejar el robot PhantomX PX100 nuevo del laboratorio, inlcuyendo archivos de configuración y modelos URDF.
 
 # Laboratorio 2: Cinemática directa PhantomX ROS
 ## Sección 1: Modelo DH
@@ -100,6 +93,7 @@ Explicación del Código, función Link y Serial Link. Fotos del modelo en Matla
 `        velocidad.angular.x=0`
 `        velocidad.angular.y=0`
 `        velocidad.angular.z=velAngular`
+Control mediante Matlab+ROS+Dynamixel+Rviz: https://youtu.be/3_T5Dx4dea4
 
 ### Análisis:
 
