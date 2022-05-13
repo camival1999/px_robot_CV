@@ -1,9 +1,9 @@
 Date of creation 06/May/2022.
 
 This repository will contain the work from Camilo Valencia and Sara Jiménez for the course "Robótica 2022-1" in the Universidad Nacional de Colombia Sede Bogotá, continuing with "Taller 2"
-# px_robot
+# px_robot_CV
 Copia del repo px_robot modificado por Camilo Valencia y Sara Jiménez.
-Contendrá los archivos necesarios para manejar el robot PhantomX PX100 nuevo del laboratorio, inlcuyendo archivos de configuración y modelos URDF.
+Contendrá los archivos necesarios para manejar el robot PhantomX PX100 nuevo del laboratorio, inlcuyendo archivos de configuración, modelos URDF, scripts de Python y Matlab.
 
 # Laboratorio 2: Cinemática directa PhantomX ROS
 ## Sección 1: Modelo DH
@@ -12,14 +12,29 @@ Para definir el modelo y parámetros que vamos a emplear para el laboratorio nec
  
 inserte fotos de las medidas en la tablet y el plano del fabricante en favoritos
 
-### Diagama DH
+### Diagama y parámetros DH
 Una vez definidas estas dimensiones procedemos a definir los marcos coordenados del diagrama DH std que vamos a emplear visto a continuación:
 
 inserte foto del diagrama DH
-### Parámetros DH 
-Una vez definidos estos marcos de referencia procedemos a generar la tabla de parámetros que requieren softwares como Matlab para obtener el modelo del robot virtual
 
-insertar tabla de parámetros DH
+Y una vez definidos estos marcos de referencia procedemos a generar la tabla de parámetros DHstd que es requerida por softwares como Matlab para obtener el modelo del robot virtual
+
+| j  | a<sub>i</sub> | α<sub>i</sub>  | d<sub>i</sub> | θ<sub>i</sub>| Offset |
+|----|---------------|----------------|---------------|--------------|--------|
+| 1  | 0             | -π/2           | 47            | q<sub>1</sub>|   π    |
+| 2  | 105.95        |    0           | 0             | q<sub>2</sub>| 1.5986π|
+| 3  | 100           |    0           | 0             | q<sub>3</sub>| 0.4014π|
+| 4  | 100           |    0           | 0             | q<sub>4</sub>|   0    |
+
+
+Sin embargo para nuestro análisis decidimos trabajar con una postura de Home distinta, cuyo modelo DH y tabla de parámetros son los siguientes:
+
+| j  | a<sub>i</sub> | α<sub>i</sub>  | d<sub>i</sub> | θ<sub>i</sub>| Offset |
+|----|---------------|----------------|---------------|--------------|--------|
+| 1  | 0             | -π/2           | 47            | q<sub>1</sub>|   π    |
+| 2  | 105.95        |    0           | 0             | q<sub>2</sub>|-0.4014π|
+| 3  | 100           |    0           | 0             | q<sub>3</sub>|-0.0986π|
+| 4  | 100           |    0           | 0             | q<sub>4</sub>|   0    |
 
 #### Materiales:
     -Robot PhantomX Pincher
@@ -48,7 +63,7 @@ insertar tabla de parámetros DH
         -Dynamixel 
 
 
-### Materiales, metodología y Resultados
+### Metodología y Resultados
 Explicación del programa
 
 Para realizar este programa, iniciamos definiendo las posiciones de home y destino, para luego realizar el programa de python que por medio de las teclas que el usuario presiones se cambie entre estas poses cada motor.
@@ -64,7 +79,7 @@ Por medio del Dynamixel con el robot conectado encontramos los valores que nosot
 | 4  | 600  | 3333 | 2048 | 835     |
 | 5  | 1550 | 3600 | 3110 | 2180    |
 
-Control mediante script de Python: https://youtu.be/I8w1deoKF24
+Vídeo demostrativo del control mediante script de Python: https://youtu.be/I8w1deoKF24
 
 ### Análisis:
 
@@ -74,7 +89,7 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
 ## Sección 3: Toolbox
 
 ### Materiales, metodología y Resultados
-Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior para obtener el siguiente código:
+Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior en la pose de Home para obtener el siguiente código:
 
 ![SerialLink](https://user-images.githubusercontent.com/55710287/168346238-dc6b90d1-89cf-44c6-ae46-f894365c79c2.png)
 
@@ -87,20 +102,22 @@ Una vez definido el robot, podemos emplear funciones propias del toolbox para ha
 ![TCP](https://user-images.githubusercontent.com/55710287/168346334-81c85b0f-4995-4b90-96c2-0b0279fd2f0f.png)
 ![TCPMatrices](https://user-images.githubusercontent.com/55710287/168346353-01333af7-9931-46a7-a9a4-39219ca47d56.png)
 
+Como detalle adicional le agregamos un ciclo anidado para recorrer la matriz resultante en busca de valores muy cercanos a 0 y reemplazarlos por exactamente 0 con el fin de limpiar y ordenar la MTH. Esto dado que el Toolbox tiene ciertos errores numéricos en decimales extremos, causando que resultados que  deberían ser 0, resulten en valores muy cercanos del orden de 10<sup>-17</sup> presentes en la matriz. 
+
 Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación como se explicó empleando la variable q1:
 
-Pose Home:
+Pose Home [0 0 0 0]:
 ![posHome](https://user-images.githubusercontent.com/55710287/168346684-b176a5dd-7041-4174-9fd4-bedac5d4003e.png)
 
-Pose 1:
+Pose 1 [1.5707 -0.7 0.2 0.9]:
 ![pos1](https://user-images.githubusercontent.com/55710287/168346647-1673e9fa-d02b-4266-ae96-f3be807f137e.png)
 
-Pose 2:
+Pose 2 [-1.5707 1.2 0.4 -2]: 
 ![pos2](https://user-images.githubusercontent.com/55710287/168346712-f577c2b5-8c95-46ae-ad27-e56e319ac8cd.png)
 
 ### Análisis:
 
-Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colisión con el robot real. Sin embargo no se tienen en cuenta colisiones propias, es decir cuando se intersecta consigo mismo, entonces hay que tomar las gráficas teniendo en cuenta alguna posible interseccón propia.
+Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colisión o daño con el robot real y obtener de manera sencilla todas sus ecuaciones de cinemática, matrices y demás. Además vemos que si bien ambas matrices MTH resultantes son casi idénticas, no coinciden ciertos signos. Esto es debido a que en el cálculo manual de la matriz, no se tuvo en cuenta la rotación del marco base de 180° alrededor de Z, lo cual se arregla fácilmente premultiplicando la expresión por la MTH del eslabón 0 a base o mundo que fue obviada con el fin de mostrar que se debe tener cuidado a la hora de trabajar con distintos marcos de referencia, pues esto puede llevar a resultados completamente diferentes que pueden parecer iguales al no mirar detenidamente.
 
 ## Sección 4: Conexión con Matlab
 
