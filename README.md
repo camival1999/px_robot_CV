@@ -27,6 +27,22 @@ Y el manual de usuario resultante al llamar `man rm`:
 ![Screenshot from 2022-04-07 18-42-11](https://user-images.githubusercontent.com/55710287/162336791-09f16a88-31df-419b-9d3d-1c5191302810.png)
 ### Diagama DH
 
+#### Materiales:
+    -Robot PhantomX Pincher
+        -6 motores Dynamixel AX12
+        -Fuente 12V
+        -FTDI
+        -HUB
+    -Computador
+        -Ubuntu 20.04
+        -Ros noetic
+        -Dynamixel 
+        -Matlab 2020b
+            -Toolbox Peter Corke 9.10
+    -Calibrador pie de rey
+    
+
+
 
 ## Sección 2: Python
 ### Materiales, metodología y Resultados
