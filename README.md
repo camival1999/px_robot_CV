@@ -7,6 +7,15 @@ Contendrá los archivos necesarios para manejar el robot PhantomX PX100 nuevo de
 
 # Laboratorio 2: Cinemática directa PhantomX ROS
 ## Sección 1: Modelo DH
+
+#### Materiales:
+    -Robot PhantomX Pincher
+        -6 motores Dynamixel AX12
+        -Fuente 12V
+        -FTDI
+        -HUB
+        
+    -Calibrador pie de rey
 ### Medidas
 Para definir el modelo y parámetros que vamos a emplear para el laboratorio necesitamos conocer sus dimensiones, especialmente aquellas entre las articulaciones dado que este modelo nuevo posee algunas diferencias respecto al anterior. A continuación se muestran las medidas tomadas en laboratorio con un calibrador y aquellas proporcionadas por el fabricante para verificarlas.
  
@@ -35,20 +44,6 @@ Sin embargo para nuestro análisis decidimos trabajar con una postura de Home di
 | 2  | 105.95        |    0           | 0             | q<sub>2</sub>|-0.4014π|
 | 3  | 100           |    0           | 0             | q<sub>3</sub>|-0.0986π|
 | 4  | 100           |    0           | 0             | q<sub>4</sub>|   0    |
-
-#### Materiales:
-    -Robot PhantomX Pincher
-        -6 motores Dynamixel AX12
-        -Fuente 12V
-        -FTDI
-        -HUB
-    -Computador
-        -Ubuntu 20.04
-        -Ros noetic
-        -Dynamixel 
-        -Matlab 2020b
-            -Toolbox Peter Corke 9.10
-    -Calibrador pie de rey
     
 ## Sección 2: Python
 #### Materiales:
