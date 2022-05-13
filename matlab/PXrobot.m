@@ -28,9 +28,9 @@
     PhantomX.tool = tool; %Ajuste para emplear notación NOA
     PhantomX.base = base; %Si no se reajusta la base es necesario modificar el offset 1
 % Graficar robot
-q1 = [0 0 0 0];
+%q1 = [0 0 0 0];
 %q1 = [1.5707 -0.7 0.2 0.9];
-%q1 = [-1.5707 1.2 0.4 -2];
+q1 = [-1.5707 1.2 0.4 -2];
     w1 = figure();
     PhantomX.plot(q1,'notiles');
     hold on

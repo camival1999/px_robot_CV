@@ -50,26 +50,17 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
 ## Sección 3: Toolbox
 
 ### Metodología y Resultados
-Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
 Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior para obtener el siguiente código:
 
-Inserte código de Matlab Link y serial link
 
-`       #configuración vel linal en x `
-`        velocidad.linear.x=velLinear`
-`        velocidad.linear.y=0`
-`        velocidad.linear.z=0`
-`        #Configuración vel angular` 
-`        velocidad.angular.x=0`
-`        velocidad.angular.y=0`
-`        velocidad.angular.z=velAngular`
-Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot:
 
-Inserte foto del robot en matlab
+Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot y finalmente graficarlo según los ángulos definidos en el vector q1:
+
+Inserte foto del código plot robot en matlab
 
 Una vez definido el robot, podemos emplear funciones propias del toolbox para hallar las MTH entre eslabones y entre el TCP y la base como se ve a continuación:
 
-Foto obteniendo el la MTH tcp
+Foto obteniendo el código y las MTH tcp
 
 Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación:
 
