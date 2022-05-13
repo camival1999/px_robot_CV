@@ -77,12 +77,7 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
 
 ## Sección 3: Toolbox
 
-<<<<<<< HEAD
-### Metodología y Resultados
-=======
 ### Materiales, metodología y Resultados
-Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
->>>>>>> 83ab33a23971174624f270427ee9bfaad364ff35
 Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior para obtener el siguiente código:
 
 
