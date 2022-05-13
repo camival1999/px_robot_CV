@@ -35,9 +35,6 @@ insertar tabla de parámetros DH
             -Toolbox Peter Corke 9.10
     -Calibrador pie de rey
     
-
-
-
 ## Sección 2: Python
 #### Materiales:
     -Robot PhantomX Pincher
@@ -67,7 +64,6 @@ Por medio del Dynamixel con el robot conectado encontramos los valores que nosot
 | 4  | 600  | 3333 | 2048 | 835     |
 | 5  | 1550 | 3600 | 3110 | 2180    |
 
-
 Control mediante script de Python: https://youtu.be/I8w1deoKF24
 
 ### Análisis:
@@ -80,25 +76,26 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
 ### Materiales, metodología y Resultados
 Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior para obtener el siguiente código:
 
-
+![SerialLink](https://user-images.githubusercontent.com/55710287/168346238-dc6b90d1-89cf-44c6-ae46-f894365c79c2.png)
 
 Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot y finalmente graficarlo según los ángulos definidos en el vector q1:
 
-Inserte foto del código plot robot en matlab
+![Plot](https://user-images.githubusercontent.com/55710287/168346282-c9e6eb96-ed17-45b3-a575-05c41a36a02c.png)
 
 Una vez definido el robot, podemos emplear funciones propias del toolbox para hallar las MTH entre eslabones y entre el TCP y la base como se ve a continuación:
 
-Foto obteniendo el código y las MTH tcp
+![TCP](https://user-images.githubusercontent.com/55710287/168346334-81c85b0f-4995-4b90-96c2-0b0279fd2f0f.png)
+![TCPMatrices](https://user-images.githubusercontent.com/55710287/168346353-01333af7-9931-46a7-a9a4-39219ca47d56.png)
 
-Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación:
+Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación como se explicó empleando la variable q1:
 
-Fotos en distintas poses.
+![posHome](https://user-images.githubusercontent.com/55710287/168346684-b176a5dd-7041-4174-9fd4-bedac5d4003e.png)
+![pos1](https://user-images.githubusercontent.com/55710287/168346647-1673e9fa-d02b-4266-ae96-f3be807f137e.png)
+![pos2](https://user-images.githubusercontent.com/55710287/168346712-f577c2b5-8c95-46ae-ad27-e56e319ac8cd.png)
 
 ### Análisis:
 
 Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colision con el robot real. Sin embargo no se tienen en cuenta colisiones propias, es decir cuando se intersecta consigo mismo, entonces hay que tomar las gráficas teniendo en cuenta alguna posible interseccón propia.
-
-
 
 ## Sección 4: Conexión con Matlab
 
