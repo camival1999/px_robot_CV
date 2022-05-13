@@ -36,10 +36,8 @@ insertar tabla de parámetros DH
     -Calibrador pie de rey
     
 
-
-
 ## Sección 2: Python
-### Materiales, metodología y Resultados
+### Metodología y Resultados
 Explicación del programa
 
 Control mediante script de Python: https://youtu.be/I8w1deoKF24
@@ -51,7 +49,7 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
 
 ## Sección 3: Toolbox
 
-### Materiales, metodología y Resultados
+### Metodología y Resultados
 Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
 
 
@@ -72,7 +70,7 @@ Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan
 
 ## Sección 4: Conexión con Matlab
 
-### Materiales, metodología y Resultados
+### Metodología y Resultados
 Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
 
 
@@ -91,7 +89,7 @@ Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan
 
 ## Sección 5: Matlab+Ros+Toolbox
 
-### Materiales, metodología y Resultados
+### Metodología y Resultados
 Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
 
 
