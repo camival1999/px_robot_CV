@@ -36,9 +36,37 @@ insertar tabla de parámetros DH
     -Calibrador pie de rey
     
 
+
+
 ## Sección 2: Python
-### Metodología y Resultados
+#### Materiales:
+    -Robot PhantomX Pincher
+        -6 motores Dynamixel AX12
+        -Fuente 12V
+        -FTDI
+        -HUB
+    -Computador
+        -Ubuntu 20.04
+        -Ros noetic
+        -Dynamixel 
+
+
+### Materiales, metodología y Resultados
 Explicación del programa
+
+Para realizar este programa, iniciamos definiendo las posiciones de home y destino, para luego realizar el programa de python que por medio de las teclas que el usuario presiones se cambie entre estas poses cada motor.
+
+-Definición de poses: 
+Por medio del Dynamixel con el robot conectado encontramos los valores que nosotros consideramos para los límites articulares, para así evitar que cualquier pose futura ocasionara un overload en los motores 
+
+| ID | Mín  | Máx  | Home | Destino |
+|----|------|------|------|---------|
+| 1  | 0    | 4095 | 2048 | 3073    |
+| 2  | 1100 | 3300 | 2048 | 2477    |
+| 3  | 1000 | 3333 | 3073 | 1925    |
+| 4  | 600  | 3333 | 2048 | 835     |
+| 5  | 1550 | 3600 | 3110 | 2180    |
+
 
 Control mediante script de Python: https://youtu.be/I8w1deoKF24
 
@@ -49,7 +77,12 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
 
 ## Sección 3: Toolbox
 
+<<<<<<< HEAD
 ### Metodología y Resultados
+=======
+### Materiales, metodología y Resultados
+Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
+>>>>>>> 83ab33a23971174624f270427ee9bfaad364ff35
 Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior para obtener el siguiente código:
 
 
@@ -74,7 +107,7 @@ Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cin
 
 ## Sección 4: Conexión con Matlab
 
-### Metodología y Resultados
+### Materiales, metodología y Resultados
 Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
 
 
@@ -93,7 +126,7 @@ Este ejercicio es muy interesante ya que permite no solo conocer cómo funcionan
 
 ## Sección 5: Matlab+Ros+Toolbox
 
-### Metodología y Resultados
+### Materiales, metodología y Resultados
 Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
 
 
