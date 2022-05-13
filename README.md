@@ -18,12 +18,13 @@ Contendrá los archivos necesarios para manejar el robot PhantomX PX100 nuevo de
 ### Medidas
 Para definir el modelo y parámetros que vamos a emplear para el laboratorio necesitamos conocer sus dimensiones, especialmente aquellas entre las articulaciones dado que este modelo nuevo posee algunas diferencias respecto al anterior. A continuación se muestran las medidas tomadas en laboratorio con un calibrador y aquellas proporcionadas por el fabricante para verificarlas.
  
-inserte fotos de las medidas en la tablet y el plano del fabricante en favoritos
+![Modelo](https://user-images.githubusercontent.com/55710287/168397177-2eed1805-2caf-475f-b450-df4d8117a0ef.png)
+![Plano](https://user-images.githubusercontent.com/55710287/168397178-cae7e5ae-cf68-4c07-97bc-80931420fadb.png)
 
 ### Diagama y parámetros DH
 Una vez definidas estas dimensiones procedemos a definir los marcos coordenados del diagrama DH std que vamos a emplear visto a continuación:
 
-inserte foto del diagrama DH
+![DHModelo](https://user-images.githubusercontent.com/55710287/168397334-275399d6-47c8-4ac4-84b0-34400c2723b8.png)
 
 Y una vez definidos estos marcos de referencia procedemos a generar la tabla de parámetros DHstd que es requerida por softwares como Matlab para obtener el modelo del robot virtual
 
@@ -36,6 +37,8 @@ Y una vez definidos estos marcos de referencia procedemos a generar la tabla de 
 
 
 Sin embargo para nuestro análisis decidimos trabajar con una postura de Home distinta, cuyo modelo DH y tabla de parámetros son los siguientes:
+
+![DHHome](https://user-images.githubusercontent.com/55710287/168397356-89bdb070-9af9-451f-a3cb-817231a646c1.png)
 
 | j  | a<sub>i</sub> | α<sub>i</sub>  | d<sub>i</sub> | θ<sub>i</sub>| Offset |
 |----|---------------|----------------|---------------|--------------|--------|
@@ -87,7 +90,7 @@ Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetro
 
 ![SerialLink](https://user-images.githubusercontent.com/55710287/168346238-dc6b90d1-89cf-44c6-ae46-f894365c79c2.png)
 
-Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot y finalmente graficarlo según los ángulos definidos en el vector q1:
+Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot y finalmente graficarlo según los ángulos definidos en el vector q1 con el siguiente código:
 
 ![Plot](https://user-images.githubusercontent.com/55710287/168346282-c9e6eb96-ed17-45b3-a575-05c41a36a02c.png)
 
