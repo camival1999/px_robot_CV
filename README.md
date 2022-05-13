@@ -96,7 +96,7 @@ Este script tiene el trabajo de navegar entre articulaciones usando las teclas "
 
     Finalmente pasamos al main que recibe la información de las taclas presionadas usando ```getkey``` luego con esta información según la tecla presionada se cambia de articulación  con "w" o "s" donde si se llega al wait y se presiona s se vuelve al wrist y viceversa. Todo esto se encuentra en un loop.
 
-Finalmente se pueden observar los resuldatos de nuestro control mediante  script de python, con el gemelo virtual en Rviz: https://youtu.be/I8w1deoKF24
+Para finalizar se pueden observar los resultados de nuestro control mediante  script de python, con el gemelo virtual en Rviz en el siguiente video: https://youtu.be/I8w1deoKF24
 
 
 ### Análisis:
@@ -105,8 +105,6 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, lo cual
 
 
 ## Sección 3: Toolbox
-
-<<<<<<< HEAD
 ### Materiales
 - Robot PhantomX Pincher
     - 6 motores Dynamixel AX12
@@ -118,47 +116,18 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, lo cual
     - Matlab R2020b 
 ### Metodología y Resultados
 Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior en la pose de Home para obtener el siguiente código incluído en el script `PXrobot.m`:
-=======
-### Materiales, metodología y Resultados
-<<<<<<< HEAD
-Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
-Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior para obtener el siguiente código:
-=======
-Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior en la pose de Home para obtener el siguiente código:
->>>>>>> ad3f99401532cc18fdc1ca4cbb986798af76713a
->>>>>>> 49bc659dc03de42e820a56ecc0f360a20cc50107
 
-Inserte código de Matlab Link y serial link
+![SerialLink](https://user-images.githubusercontent.com/55710287/168346238-dc6b90d1-89cf-44c6-ae46-f894365c79c2.png)
 
-<<<<<<< HEAD
-`       #configuración vel linal en x `
-`        velocidad.linear.x=velLinear`
-`        velocidad.linear.y=0`
-`        velocidad.linear.z=0`
-`        #Configuración vel angular` 
-`        velocidad.angular.x=0`
-`        velocidad.angular.y=0`
-`        velocidad.angular.z=velAngular`
-Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot:
-=======
 Este código nos permite definir una serie de articulaciones, las cuales luego son unidas con el comando SerialLink para conformar el modelo del robot y finalmente graficarlo según los ángulos definidos en el vector q1 con el siguiente código:
->>>>>>> ad3f99401532cc18fdc1ca4cbb986798af76713a
 
-Inserte foto del robot en matlab
+![Plot](https://user-images.githubusercontent.com/55710287/168346282-c9e6eb96-ed17-45b3-a575-05c41a36a02c.png)
 
 Una vez definido el robot, podemos emplear funciones propias del toolbox para hallar las MTH entre eslabones y entre el TCP y la base como se ve a continuación:
 
-Foto obteniendo el la MTH tcp
+![TCP](https://user-images.githubusercontent.com/55710287/168346334-81c85b0f-4995-4b90-96c2-0b0279fd2f0f.png)
+![TCPMatrices](https://user-images.githubusercontent.com/55710287/168346353-01333af7-9931-46a7-a9a4-39219ca47d56.png)
 
-<<<<<<< HEAD
-Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación:
-
-Fotos en distintas poses.
-
-### Análisis:
-
-Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colision con el robot real. Sin embargo no se tienen en cuenta colisiones propias, es decir cuando se intersecta consigo mismo, entonces hay que tomar las gráficas teniendo en cuenta alguna posible interseccón propia.
-=======
 Como detalle adicional le agregamos un ciclo anidado para recorrer la matriz resultante en busca de valores muy cercanos a 0 y reemplazarlos por exactamente 0 con el fin de limpiar y ordenar la MTH. Esto dado que el Toolbox tiene ciertos errores numéricos en decimales extremos, causando que resultados que  deberían ser 0, resulten en valores muy cercanos del orden de 10<sup>-17</sup> presentes en la matriz. 
 
 Finalmente podemos graficar el robot en distintas poses asignando ángulos concretos a cada articulación como se explicó empleando la variable q1:
@@ -171,14 +140,10 @@ Pose 1 [1.5707 -0.7 0.2 0.9]:
 
 Pose 2 [-1.5707 1.2 0.4 -2]: 
 ![pos2](https://user-images.githubusercontent.com/55710287/168346712-f577c2b5-8c95-46ae-ad27-e56e319ac8cd.png)
->>>>>>> ad3f99401532cc18fdc1ca4cbb986798af76713a
 
+### Análisis:
 
-<<<<<<< HEAD
-=======
 Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cinemáticamente hablando, y con ello el Toolbox nos permite simular diferentes configuraciones sin tener riesgo alguno de causar alguna colisión o daño con el robot real y obtener de manera sencilla todas sus ecuaciones de cinemática, matrices y demás. Además vemos que si bien ambas matrices MTH resultantes son casi idénticas, no coinciden ciertos signos. Esto es debido a que en el cálculo manual de la matriz, no se tuvo en cuenta la rotación del marco base de 180° alrededor de Z, lo cual se arregla fácilmente premultiplicando la expresión por la MTH del eslabón 0 a base o mundo que fue obviada con el fin de mostrar que se debe tener cuidado a la hora de trabajar con distintos marcos de referencia, pues esto puede llevar a resultados completamente diferentes que pueden parecer iguales al no mirar detenidamente.
->>>>>>> ad3f99401532cc18fdc1ca4cbb986798af76713a
-
 ## Sección 4: Conexión con Matlab
 
 ### Materiales
