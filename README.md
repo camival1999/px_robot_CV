@@ -85,8 +85,17 @@ Como se puede observar en el vídeo, Python nos permite generar scripts, es posi
 
 ## Sección 3: Toolbox
 
-### Materiales, metodología y Resultados
-Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior en la pose de Home para obtener el siguiente código:
+### Materiales
+- Robot PhantomX Pincher
+    - 6 motores Dynamixel AX12
+    - Fuente 12V
+    - FTDI
+    - HUB
+- Computador
+    - Ubuntu 20.04
+    - Matlab R2020b 
+### Metodología y Resultados
+Para el uso del toolbox de Peter Corke empleamos Matlab y la tabla de parámetros definida en el punto anterior en la pose de Home para obtener el siguiente código incluído en el script `PXrobot.m`:
 
 ![SerialLink](https://user-images.githubusercontent.com/55710287/168346238-dc6b90d1-89cf-44c6-ae46-f894365c79c2.png)
 
@@ -118,18 +127,23 @@ Como podemos ver, el modelo generado en Matlab es idéntico al PhantomX real cin
 
 ## Sección 4: Conexión con Matlab
 
-### Materiales, metodología y Resultados
-Explicación del Código, función Link y Serial Link. Fotos del modelo en Matlab .plot
+### Materiales
+- Robot PhantomX Pincher
+    - 6 motores Dynamixel AX12
+    - Fuente 12V
+    - FTDI
+    - HUB
+- Computador
+    - Ubuntu 20.04
+    - Matlab R2020b 
+    - Dynamixel
+### Metodología y Resultados
+En esta sección tratamos la conexión de Matlab con el robot PhantomX mediante el uso de tópicos, suscriptores y publicadores, nuevamente incluído en el script `PXrobot.m`.
 
+Iniciamos conectando el nodo maestro de ROS en Matlab para poder comunicarnos con el robot. Tras ellos sencillamente definimos un suscriptor al tópico `/dynamixel_workbench/joint_states` el cual es el encargado de leer el estado de cada junta en el PhantomX y obtenemos esa información mediante el comando `receive()`.
+El siguiente paso es definir un publicador a este mismo tópico para poder enviar la información del estado de las juntas que luego el PhantomX puede leer como es indicado en el gráfico de nodos RQT, teniendo en cuenta el formato del mensaje requerido 
 
-`       #configuración vel linal en x `
-`        velocidad.linear.x=velLinear`
-`        velocidad.linear.y=0`
-`        velocidad.linear.z=0`
-`        #Configuración vel angular` 
-`        velocidad.angular.x=0`
-`        velocidad.angular.y=0`
-`        velocidad.angular.z=velAngular`
+Fotos del código y la consola
 
 ### Análisis:
 

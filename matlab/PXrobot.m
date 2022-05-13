@@ -71,25 +71,26 @@ q1 = [-1.5707 1.2 0.4 -2];
     rosinit
 %%
 % Subscripción a tópico de pose
-%Definimos el subscriber al topico pose, con el tipo de mensaje obtenido usando en terminal el comando "rostopic info /joint_states"
+% Definimos el subscriber al topico pose, con el tipo de mensaje obtenido usando en terminal
+% el comando "rostopic info /joint_states"
     poseSub = rossubscriber('/dynamixel_workbench/joint_states','sensor_msgs/JointState'); 
-%Pausa opara permitir que la subscripción se procese
+% Pausa opara permitir que la subscripción se procese
     pause(1); 
-
-%Usamos la función "receive()" para poner al subscriptor en modo "escucha",a la espera de que se transmita un mensaje del tópico
+ 
+% Usamos la función "receive()" para poner al subscriptor en modo "escucha",a la espera de que se transmita un mensaje del tópico
     msgPose = receive(poseSub);
     pause(1); 
-    disp('Position before Joints 1-4');
+    disp('Position before Joints 1-5');
     disp(msgPose.Position)
-%Definimos el publicador a tópico
+% Definimos el publicador a tópico
     [posPub, posMsg] = rospublisher('/dynamixel_workbench/joint_states','sensor_msgs/JointState'); 
 
-%Definimos el mensaje que queremos publicar al tópico
+% DeSfinimos el mensaje que queremos publicar al tópico
     posMsg.Header.Stamp.Sec = msgPose.Header.Stamp.Sec+4;
     posMsg.Name = {'joint_1' 'joint_2' 'joint_3' 'joint_4' 'joint_5'}; 
-    posMsg.Position = [0.0 0.0 0.0 0.0 0.0];
+    posMsg.Position = (pi/180)*[45 30 -60 -70 0];
     send(posPub,posMsg); %Envio
 
     msgPose = receive(poseSub);
-    disp('Position after Joints 1-4');
+    disp('Position after Joints 1-5');
     disp(msgPose.Position)
